@@ -35,6 +35,7 @@ public class ItemService {
                 .toList();
     }
 
+    //이 메서드의 결과는 캐싱이 가능하다
     // cacheNames: 메서드로 인해서 만들어질 캐시를 지칭하는 이름
 // key: 캐시에서 데이터를 구분하기 위해 활용할 값
     @Cacheable(cacheNames = "itemCache", key = "args[0]")
