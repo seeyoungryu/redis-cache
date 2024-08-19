@@ -20,6 +20,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
+
     public ItemDto create(ItemDto dto) {
         return ItemDto.fromEntity(itemRepository.save(Item.builder()
                 .name(dto.getName())
@@ -28,6 +29,7 @@ public class ItemService {
                 .build()));
     }
 
+    @Cacheable(cacheNames = "itemAllCache", key = "methodName")
     public List<ItemDto> readAll() {
         return itemRepository.findAll()
                 .stream()
